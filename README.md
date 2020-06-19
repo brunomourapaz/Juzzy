@@ -1,4 +1,4 @@
-# Here Juzzy library extension - Implementation of Type-2 FLSs using Java.
+# Juzzy library extension - Implementation of Type-2 FLSs using Java.
 
 The extended version of the Juzzy library contemplating new interval-valued aggregation function (IvAF) which are modeled by pairs of N-dual IvAF, as conjunctive/disjunctive overlap aggregations.
 
