@@ -2,7 +2,7 @@
 
 ### Implementation of Type-2 FLSs using Java.
 
-The extended version of the Juzzy library contemplating new interval-valued aggregation function (IvAF) which are modeled by pairs of N-dual IvAF, as conjunctive/disjunctive overlap aggregations.
+The extended version of the Juzzy library contains new interval-valued aggregation functions (IvAF) which are modeled by pairs of N-dual IvAF, as conjunctive/disjunctive overlap aggregations.
 
 Original library at
 http://juzzy.wagnerweb.net/
