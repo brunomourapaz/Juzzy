@@ -32,6 +32,9 @@ public class ExampleLauncher
                 + "IT2NSzSlicesGT2  --> launches a zSlices based IT2 Non Singleton General Type-2 Fuzzy Logic System\n"
                 + "GT2NSzSlicesGT2  --> launches a zSlices based GT2 Non Singleton General Type-2 Fuzzy Logic System\n"
                 + "zSlicesGT2MC  --> launches a zSlices based General Type-2 Fuzzy Logic System in MultiCore Mode\n"
+                + "intervalT2IntFLBCC  --> launches a Type-2 Fuzzy Logic system for cloud computing resource management\n"
+                + "intervalT2IntFLBCCNDimensional  --> launches a Type-2 Fuzzy Logic N-Dimensional system for cloud computing resource management\n"
+                + "intervalT2IntVideo  --> launches a Type-2 Fuzzy Logic System for classifying network video traffic\n"
                 + "zSlicesGT2MC-2outputs  --> launches a zSlices based General Type-2 Fuzzy Logic System with 2 outputs in MultiCore Mode");
         if(args.length==0)
         System.out.println(s);
@@ -45,6 +48,10 @@ public class ExampleLauncher
             new SimpleIT2FLS();
         else if(args[0].equals("intervalT2IntFLBCC"))
         new SimpleIT2FLSIntFLBCC();
+        else if(args[0].equals("intervalT2IntFLBCCNDimensional"))
+            new SimpleIT2FLSIntFLBCCNDimensional();
+        else if(args[0].equals("intervalT2IntVideo"))
+            new SimpleIT2FLSIntVideo();
         else if(args[0].equals("type1NSintervalT2"))
             new SimpleNST1IT2FLS();
         else if(args[0].equals("IT2NSintervalT2"))

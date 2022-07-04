@@ -6,6 +6,8 @@
  */
 package type1.sets;
 
+import javax.swing.JOptionPane;
+
 import generic.BadParameterException;
 import generic.Tuple;
 
@@ -39,6 +41,8 @@ public class T1MF_Intersection extends T1MF_Prototype {
 		double yLeft = setB.getSupport().getLeft();
 		double yRight = setB.getSupport().getRight();
 
+		//JOptionPane.showMessageDialog(null, "T1MF_Intersection: Intersecção eh: "+typeIntersection);
+		
 		if (typeIntersection.toUpperCase().equals("O2")) { // Conjunctive IvOF (without neutral element)
 
 			x = (Math.pow(xLeft, 2) * Math.pow(yLeft, 2));
@@ -65,7 +69,7 @@ public class T1MF_Intersection extends T1MF_Prototype {
 			x = Math.min(xLeft, yLeft);
 			y = Math.pow(((xRight * Math.pow(yRight, 2)) + (Math.pow(xRight, 2) * yRight) / 2), 1 / 3);
 
-		} else if (typeIntersection.equals("O2DB")) { // Mixed IvOF
+		} else if (typeIntersection.toUpperCase().equals("O2DB")) { // Mixed IvOF
 
 			x = Math.pow(xLeft, 2) * Math.pow(yLeft, 2);
 			y = (2 * xRight * yRight) / (xRight + yRight);
@@ -112,7 +116,15 @@ public class T1MF_Intersection extends T1MF_Prototype {
 			x = Math.max(0, xLeft + yLeft - 1);
 			y = Math.max(0, xRight + yRight - 1);
 
-		} else if (typeIntersection.toUpperCase().equals("MAXMIN")) { // default intersection
+		} else if (typeIntersection.toUpperCase().equals("TLK")) { 
+			
+			x = Math.min(Math.max(xLeft + yRight -1 , 0), Math.max(xRight+yLeft -1, 0));
+			y = Math.max(xRight+yRight, 0);
+			
+		} 
+		else if (typeIntersection.toUpperCase().equals("MAXMIN")) { // default intersection
+			
+			
 
 			x = Math.max(setA.getSupport().getLeft(), setB.getSupport().getLeft());
 			y = Math.min(setA.getSupport().getRight(), setB.getSupport().getRight());
@@ -120,7 +132,7 @@ public class T1MF_Intersection extends T1MF_Prototype {
 		} else {
 
 			throw new BadParameterException(
-					"Only o2, om, odb, om3, o2db, a, tl and maxmin intersection is currentlyt supported.");
+					"Only o2, om, odb, om3, o2db, a, tl, tlk and maxmin intersection is currentlyt supported.");
 		}
 
 		// Normaliza as saídas

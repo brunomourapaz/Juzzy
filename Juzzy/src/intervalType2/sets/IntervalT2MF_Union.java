@@ -34,13 +34,13 @@ public class IntervalT2MF_Union extends IntervalT2MF_Prototype {
 	 * THIS SHOULD BE REMOVED AND ALL UNION AMD INTERSECTION SHOULD BE DONE THROUGH
 	 * TYPE-1 CASES Creates a new instance of IntervalT2MF_Union
 	 */
-//    public IntervalT2MF_Union(IntervalT2MF_Interface a, IntervalT2MF_Interface b, String agregatorFunction)
+//    public IntervalT2MF_Union(IntervalT2MF_Interface a, IntervalT2MF_Interface b,  String typeUnion)
 //    {   
 //        super("Union of ("+a.getName()+" and "+b.getName()+")");
 //
 //        //JOptionPane.showMessageDialog(null,"Left A: "+a.getSupport().getLeft()+" Right A: "+a.getSupport().getRight());
-//        this.uMF = new T1MF_Union(a.getUMF(), b.getUMF());
-//        this.lMF = new T1MF_Union(a.getLMF(), b.getLMF());
+//        this.uMF = new T1MF_Union(a.getUMF(), b.getUMF(), typeUnion);
+//        this.lMF = new T1MF_Union(a.getLMF(), b.getLMF(), typeUnion);
 //              
 //                support = new Tuple(Math.min(a.getSupport().getLeft(),b.getSupport().getLeft()),
 //                    Math.max(a.getSupport().getRight(),b.getSupport().getRight()));    
@@ -51,8 +51,11 @@ public class IntervalT2MF_Union extends IntervalT2MF_Prototype {
 
 		// JOptionPane.showMessageDialog(null,"Left A: "+a.getSupport().getLeft()+"
 		// Right A: "+a.getSupport().getRight());
-		this.uMF = new T1MF_Union(a.getUMF(), b.getUMF());
-		this.lMF = new T1MF_Union(a.getLMF(), b.getLMF());
+		
+		//JOptionPane.showMessageDialog(null, "IntervalT2MF_Union: "+a.getSupport().getLeft()+" "+a.getSupport().getRight());
+		
+		this.uMF = new T1MF_Union(a.getUMF(), b.getUMF(), typeUnion);
+		this.lMF = new T1MF_Union(a.getLMF(), b.getLMF(), typeUnion);
 
 		double xLeft = a.getSupport().getLeft();
 		double xRight = a.getSupport().getRight();
@@ -131,6 +134,12 @@ public class IntervalT2MF_Union extends IntervalT2MF_Prototype {
 			x = Math.min(1, xLeft + yLeft);
 			y = Math.min(1, xRight + yRight);
 
+		} else if (typeUnion.toUpperCase().equals("SLK")) {
+			
+			x = Math.min(1, xLeft + yLeft);
+			y = Math.min(Math.min(1, xRight + yLeft), Math.min(1, xLeft + yRight));
+			
+			
 		} else if (typeUnion.toUpperCase().equals("MINMAX")) { // default intersection the Juzzy min-max
 
 			x = Math.min(a.getSupport().getLeft(), b.getSupport().getLeft());

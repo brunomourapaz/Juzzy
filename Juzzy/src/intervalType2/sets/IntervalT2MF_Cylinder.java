@@ -36,6 +36,8 @@ public class IntervalT2MF_Cylinder extends IntervalT2MF_Prototype
             if(primer.getLeft()-primer.getRight()<0.000001) //account for floating point errors
             {
                 primer.setLeft(primer.getRight());
+            }else if(primer.getLeft()-primer.getRight()>0.000001) {
+            	primer.setLeft(primer.getRight());
             }
             else
                 throw new BadParameterException("Lower firing strength ("+primer.getLeft()+") should not be higher than Upper firing strength ("+primer.getRight()+").");             

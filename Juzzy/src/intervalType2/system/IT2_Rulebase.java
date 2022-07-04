@@ -27,6 +27,7 @@ public class IT2_Rulebase {
 
 	private final byte PRODUCT = 0;
 	private final byte MINIMUM = 1;
+	private final byte TLK = 7;
 
 	private String typeUnion="";
 	private String typeIntersection = "";
@@ -561,8 +562,10 @@ public class IT2_Rulebase {
 
 		if (implicationMethod == PRODUCT)
 			return "product";
-		else
+		else if (implicationMethod == MINIMUM)
 			return "minimum";
+		else 
+			return "TLK";
 
 	}
 
@@ -578,6 +581,9 @@ public class IT2_Rulebase {
 			this.implicationMethod = PRODUCT;
 		else if (implicationMethod == MINIMUM)
 			this.implicationMethod = MINIMUM;
+		else if (implicationMethod == TLK)
+			this.implicationMethod = TLK;
+
 		else
 			// throw new BadParameterException("Only product (0) and minimum (1) implication
 			// is currentlyt supported.");

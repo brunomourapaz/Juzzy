@@ -12,6 +12,9 @@ package intervalType2.sets;
 import generic.Tuple;
 import java.util.HashSet;
 import java.util.Iterator;
+
+import javax.swing.JOptionPane;
+
 import type1.sets.T1MF_Intersection;
 
 /**
@@ -31,7 +34,10 @@ public class IntervalT2MF_Intersection extends IntervalT2MF_Prototype
      */
     public IntervalT2MF_Intersection(IntervalT2MF_Interface a, IntervalT2MF_Interface b,  String typeIntersection)
     {
+    	 
         super("dummy-intersection"); //will be updated at the end of constructor
+        
+        //JOptionPane.showMessageDialog(null, "IntervalT2MF_Intersection: "+a.getSupport().getLeft()+" "+a.getSupport().getRight());
 
         //check if there is actually an intersection
         checkForIntersection:

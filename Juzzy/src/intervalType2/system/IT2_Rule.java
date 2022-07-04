@@ -14,6 +14,8 @@ import intervalType2.sets.IntervalT2MF_Interface;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import javax.swing.JOptionPane;
+
 import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QDecoderStream;
 
 import type1.sets.T1MF_Interface;
@@ -36,7 +38,7 @@ public class IT2_Rule
 	private final byte Q2 = 4;
 	private final byte QM = 5;
 	private final byte A = 6;
-	private final byte TL = 7;
+	private final byte TLK = 7;
 
     /**
     * Standard constructor for a single consequent.
@@ -102,7 +104,6 @@ public class IT2_Rule
     public Tuple getFStrength(byte tNorm)
     {
         Tuple fStrength = new Tuple(1.0,1.0);	//initialize for multiplication
-    	
         
         if(tNorm==PRODUCT)
         {
@@ -140,7 +141,37 @@ public class IT2_Rule
             	}
             }
         }
-        else if(tNorm==QDB) {
+        else if(tNorm==TLK) {
+        	
+        	
+        	
+        	for(int i = 0;i<antecedents.length;i++)
+            {
+        		//double[] x;
+        		//x[i] = 
+        		
+        	   
+        		
+            	if (antecedents[i].getInput().getInputMF() instanceof T1MF_Singleton) {
+            		
+            		//JOptionPane.showMessageDialog(null, " fStrength.getLeft(): "+fStrength.getLeft()+ 
+            		//		" antecedents[i].getFS().getLeft(): "+antecedents[i].getFS().getLeft()+" \n "+
+            		//		" fStrength.getRight(): "+fStrength.getRight()+" antecedents[i].getFS().getRight() "+antecedents[i].getFS().getRight()+
+            		//		"antecedents[i].getMF().getLMF().getFS(tNorm): "+antecedents[i].getMF().getLMF().getFS(tNorm));
+            		
+                    //fStrength.setLeft(Math.min(fStrength.getLeft(),antecedents[i].getFS().getLeft()));
+                    //fStrength.setRight(Math.min(fStrength.getRight(),antecedents[i].getFS().getRight()));
+            		
+            		//Velha
+            		fStrength.setLeft(Math.min(1, 1 - fStrength.getLeft() + antecedents[i].getFS().getLeft()));
+            		fStrength.setRight(Math.min(1, 1 - fStrength.getRight() + antecedents[i].getFS().getRight()));
+            		
+            		//nova
+            		//antecedents[i].getMF().getLMF().getFS(xmax.getLeft()
+            		//fStrength.setLeft(Math.min(1, 1 - antecedents[i].getMF().getLMF().getFS(tNorm)+antecedents[i].getMF().getLMF().getFS(tNorm) ));
+            		//fStrength.setRight(Math.min(1, 1 - antecedents[i].getMF().getUMF().getFS(tNorm)+antecedents[i].getMF().getUMF().getFS(tNorm) ));
+            	}
+            }
         	
         }
         

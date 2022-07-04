@@ -102,9 +102,13 @@ public class SimpleIT2FLS
         
         rulebase.setImplicationMethod((byte) 1);
         
+        rulebase.setTypeIntersection("maxmin"); // default juzzy maxmin
+        rulebase.setTypeUnion("minmax"); // default juzzy minmax
+        
+        
         //get some outputs
         getTip(7,8);
-        getTip(0,0);
+        getTip(3,2);
                 
         //plot some sets, discretizing each input into 100 steps.
         plotMFs("Food Quality Membership Functions", new IntervalT2MF_Interface[]{badFoodMF, greatFoodMF}, 100); 
